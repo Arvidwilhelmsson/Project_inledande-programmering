@@ -1,4 +1,3 @@
-#import matplotlib.pyplot as plt
 from basic_statistics import basic_statistics
 from sentence_analysis import sentence_analysis
 from word_frequency_analysis import word_frequency_analysis
@@ -95,7 +94,7 @@ def main():
             print(f"\n"*2)
             print("Thank you for using Text analyser!")
             print()
-            break #Stänger loopen och avslutar programmet
+            break
 
         else:
             print()

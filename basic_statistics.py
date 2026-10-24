@@ -1,3 +1,4 @@
+import matplotlib.pyplot as plt
 def basic_statistics(file_lines):
 
     lines = 0

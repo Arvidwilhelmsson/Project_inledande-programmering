@@ -1,3 +1,4 @@
+import matplotlib.pyplot as plt
 def word_frequency_analysis(file_lines):
 
     counter = 0

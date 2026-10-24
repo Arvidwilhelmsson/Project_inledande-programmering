@@ -1,3 +1,4 @@
+import matplotlib.pyplot as plt
 def sentence_analysis(file_lines):
 
     sentence = ""
@@ -71,6 +72,3 @@ def sentence_analysis(file_lines):
 
     print()
     
-    #print("Generating sentence analysis visualisation...")
-    #print()
-    #print("Press Enter to continue...")

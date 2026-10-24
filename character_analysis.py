@@ -1,4 +1,6 @@
+import matplotlib.pyplot as plt
 def character_analysis(file_lines):
+
     word_length = []
     word_counts = {}
     spaces = 0
