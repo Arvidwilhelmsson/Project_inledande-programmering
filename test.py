@@ -122,47 +122,6 @@ word_frequency_analysis(test_fil)
 '''
 
 
-def word_frequency_analysis(file_name):
-    file = open(file_name, 'r')
-
-    word_counts = {}
-    unique_words = set()
-    word_length = []
-
-    for line in file:
-        characters = line.lower()
-        for char in characters:
-            if char != '\n':
-                if char not in word_counts:
-                    word_counts[char] = 1
-                else:
-                    word_counts[char] += 1
-                unique_words.add(char)
-                word_length.append(char)
-
-        sett = set()
-        for key, value in word_counts.items():
-            sett.add((value, key))
-    sett = sorted(sett, reverse=True)[0:10]
-    return word_counts, unique_words, word_length, sett
-
-
-test_fil = "Crime_and_punishment.txt"
-counts, unique, lengths, settt = word_frequency_analysis(test_fil)
-
-print("Top 10 most common characters:")
-counter = 0
-
-for number, char in settt:
-    counter += 1
-    percentage = (number / len(lengths)) * 100
-    print(f'{counter}. {repr(char):<10} {number:,} times ({percentage:.1f}%)')
-
-
-
-
-
-
 
 
 
