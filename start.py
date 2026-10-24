@@ -6,7 +6,8 @@ from file_selection import file_selection
 from character_analysis import character_analysis
 def main():
     choice = None
-    loaded_file = None
+    file_lines = None
+    file = None
     file_choice_name = None
     fil = ["A Doll's House_Henrik Ibsent", "Frankenstein by Mary Wollstonecraft Shelley", "Moby-Dick_Herman Melville", "The Red Room August Strindberg", "The Time Machine by H. G. Wells", "Crime_and_punishment.txt"]
     print(f"Welcome to the Text analyser!\nThis program analyses text files and provies statistical insights.\n\n")
@@ -51,29 +52,36 @@ def main():
         elif choice == "1":
             print("\n--- File selection ---")
             file_choice_name = file_selection()
+            if file is not None:
+                file.close()
+            file = open(file_choice_name, 'r', encoding='utf-8')
+            file_lines = file.readlines()
+            number_of_lines = len(file_lines)
+            print(f"Analysis complete! Processed {number_of_lines} lines.")
+            print(f'Successfully loaded and analysed "{file_choice_name}"')
             print()
 
         elif choice == "2":
             print()
             print(f"--- Basic Statistics for {file_choice_name} ---")
-            basic_statistics(file_choice_name)
+            basic_statistics(file_lines)
             print(f"\n"*2)
 
         elif choice == "3":
             print(f"--- Word Analysis for {file_choice_name} ---")
-            word_frequency_analysis(file_choice_name)
+            word_frequency_analysis(file_lines)
             print(f"\n"*2)
 
         elif choice == "4":
             print()
             print(f"--- Sentence Analysis for {file_choice_name} ---")
-            sentence_analysis(file_choice_name)
+            sentence_analysis(file_lines)
             print(f"\n"*2)
 
         elif choice == "5":
             print()
             print(f"--- Character Analysis for {file_choice_name} ---")
-            character_analysis(file_choice_name)
+            character_analysis(file_lines)
             print(f"\n"*2)
 
         elif choice == "6":
@@ -82,6 +90,8 @@ def main():
             print(f"\n"*2)
 
         elif choice == "7":
+            if file is not None:
+                file.close()
             print(f"\n"*2)
             print("Thank you for using Text analyser!")
             print()

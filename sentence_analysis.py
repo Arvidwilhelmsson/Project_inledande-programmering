@@ -1,6 +1,4 @@
-
-def sentence_analysis(file_name):
-    file = open(file_name, 'r')
+def sentence_analysis(file_lines):
 
     sentence = ""
     number_words = 0
@@ -11,7 +9,7 @@ def sentence_analysis(file_name):
     shortest_sentence = None
     sentence_length_distribution = {}
 
-    for line in file:
+    for line in file_lines:
         line = line.replace("i.e.", "ie")
         words = line.lower().split()
         number_words += len(words)
@@ -76,5 +74,3 @@ def sentence_analysis(file_name):
     #print("Generating sentence analysis visualisation...")
     #print()
     #print("Press Enter to continue...")
-
-    file.close()

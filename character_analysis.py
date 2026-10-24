@@ -1,6 +1,4 @@
-def character_analysis(file_name):
-    file = open(file_name, 'r')
-
+def character_analysis(file_lines):
     word_length = []
     word_counts = {}
     spaces = 0
@@ -10,7 +8,7 @@ def character_analysis(file_name):
     punctuation = '/.|\'"*{[()}]?!%#€&=¶‰¢¥¡≠¿`^¨-_,;:·„≥>≤<@®¸√™'
     alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-    for line in file:
+    for line in file_lines:
         characters = line.lower()
         for char in characters:
             if char in alphabet:
@@ -46,5 +44,3 @@ def character_analysis(file_name):
         counter += 1
         percentage_letters = (number/len(word_length)) * 100
         print(f'  {counter:>2} {repr(char)} - {number:,} times ({round(percentage_letters,1)}%)')
-
-    file.close()

@@ -1,5 +1,4 @@
-def basic_statistics(file_name):
-    file = open(file_name, 'r')
+def basic_statistics(file_lines):
 
     lines = 0
     sentences = 0
@@ -11,7 +10,7 @@ def basic_statistics(file_name):
     characters_with_spaces = 0
     characters_without_spaces = 0
 
-    for line in file:
+    for line in file_lines:
         words = line.lower().split()
         number_words += len(words)
         lines += 1
@@ -55,4 +54,3 @@ def basic_statistics(file_name):
     #print("Generating basic statistics visualisation...")
     #print()
     #print("Press Enter to continue...")
-    file.close()
