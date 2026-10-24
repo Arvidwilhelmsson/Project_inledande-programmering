@@ -3,6 +3,7 @@ from basic_statistics import basic_statistics
 from sentence_analysis import sentence_analysis
 from word_frequency_analysis import word_frequency_analysis
 from file_selection import file_selection
+from character_analysis import character_analysis
 def main():
     choice = None
     loaded_file = None
@@ -45,8 +46,7 @@ def main():
             print("="*60)
             print(f"\n"*5)
             continue
-            
-            
+                
         # 3. Hantera valet
         elif choice == "1":
             print("\n--- File selection ---")
@@ -73,6 +73,7 @@ def main():
         elif choice == "5":
             print()
             print(f"--- Character Analysis for {file_choice_name} ---")
+            character_analysis(file_choice_name)
             print(f"\n"*2)
 
         elif choice == "6":

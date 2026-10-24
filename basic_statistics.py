@@ -12,15 +12,12 @@ def basic_statistics(file_name):
     characters_without_spaces = 0
 
     for line in file:
-        words = line.lower().split() # 'Hej, jag heter Lucas.' = ['hej,', 'jag', 'heter', 'lucas.']
-        number_words += len(words) # “ ”  ‘ ’
+        words = line.lower().split()
+        number_words += len(words)
         lines += 1
 
         for word in words:
             word = word.strip('/.|\'"*{[()}]?!%#€&=¶‰¢¥¡≠¿`^¨-_,;:·„≥>≤<@®¸√™“')
-
-
-
             unique_words.add(word)
 
         if line.split():

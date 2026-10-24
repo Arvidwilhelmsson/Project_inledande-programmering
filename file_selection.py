@@ -33,6 +33,3 @@ def file_selection():
     #print(f"Successfully loaded and analysed {file_choice_name}"")
     print()
     return file_choice_name
-
-
-
