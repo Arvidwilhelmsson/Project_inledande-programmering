@@ -6,6 +6,7 @@ def sentence_analysis(file_lines):
     previous_char = ""
     total_sentences = 0
     in_paragraph = False
+    after_ellipsis = False
     sentence_lengths = []
     longest_sentence = ""
     shortest_sentence = None
@@ -13,7 +14,6 @@ def sentence_analysis(file_lines):
 
     for line in file_lines:
         line = line.replace("i.e.", "ie")
-        line = line.replace("...", "")
         words = line.lower().split()
         number_words += len(words)
 
@@ -32,6 +32,9 @@ def sentence_analysis(file_lines):
             if char in ['.', '?', '!',':']:
                 sentence = sentence.strip(" .!?")
 
+                if char == '.' and previous_char == '.':
+                    after_ellipsis = True
+
                 if any(char.isalnum() for char in sentence):
                     length = len(sentence.split())
 
@@ -39,7 +42,7 @@ def sentence_analysis(file_lines):
                     if len(sentence) > len(longest_sentence):
                         longest_sentence = sentence
 
-                    if shortest_sentence is None or len(sentence) < len(shortest_sentence):
+                    if not after_ellipsis and (shortest_sentence is None or len(sentence) < len(shortest_sentence)):
                         shortest_sentence = sentence
 
                     if length in sentence_length_distribution:
@@ -47,10 +50,12 @@ def sentence_analysis(file_lines):
                     else:
                         sentence_length_distribution[length] = 1
 
+                if sentence != "":
+                    after_ellipsis = False
+
                 sentence = ""
 
             previous_char = char
-
     average_words_per_sentence = round(number_words / total_sentences, 1)
 
     print(f"Total sentences: {total_sentences:,}")
