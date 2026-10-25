@@ -13,6 +13,7 @@ def sentence_analysis(file_lines):
 
     for line in file_lines:
         line = line.replace("i.e.", "ie")
+        line = line.replace("...", "")
         words = line.lower().split()
         number_words += len(words)
 
