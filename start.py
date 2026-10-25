@@ -47,13 +47,27 @@ def main():
             print("\n--- File selection ---")
 
 #===================================================Fixa med detta!
-            file_choice_name = file_selection()
+            new_file_name = file_selection()
+            try:
+                new_file = open(new_file_name, 'r', encoding='utf-8')
+                number_of_lines = 0
+                for line in new_file:
+                    number_of_lines += 1
+            except FileNotFoundError:
+                print(f'Could not find "{new_file_name}" in the current folder.')
+                continue
+            except UnicodeDecodeError:
+                new_file.close()
+                print(f'"{new_file_name}" could not be read (it is not a UTF-8 text file).')
+                continue
+            if number_of_lines == 0:
+                new_file.close()
+                print(f'"{new_file_name}" is empty.')
+                continue
             if file is not None:
                 file.close()
-            file = open(file_choice_name, 'r', encoding='utf-8')
-            number_of_lines = 0
-            for line in file:
-                number_of_lines += 1
+            file = new_file
+            file_choice_name = new_file_name
 #===================================================Fixa med detta!
 
             print(f"Analysis complete! Processed {number_of_lines} lines.")

@@ -9,7 +9,7 @@ def file_selection():
     print("6. Crime_and_punishment.txt")
     print()
 
-    file_choice = input("Enter filename or number from list above: ")
+    file_choice = input("Enter filename or number from list above: ").strip()
     if file_choice == "1":
         file_choice_name = "A Doll's House_Henrik Ibsen.txt"
     elif file_choice == "2":
@@ -22,11 +22,10 @@ def file_selection():
         file_choice_name = "The Time Machine by H. G. Wells.txt"
     elif file_choice == "6":
             file_choice_name = "Crime_and_punishment.txt"
-    else: 
-        print()
-        print("Invalid input. Try again")
-        print()
-        return file_selection()
+    else:
+        file_choice_name = file_choice
+        if not file_choice_name.lower().endswith(".txt"):
+            file_choice_name += ".txt"
     print()
     
     print(f"Analysing {file_choice_name}...")
