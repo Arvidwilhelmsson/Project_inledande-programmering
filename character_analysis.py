@@ -2,34 +2,40 @@ import matplotlib.pyplot as plt
 def character_analysis(file):
     file.seek(0)
 
-    word_counts = {}
+    digits = 0
     spaces = 0
     letters = 0
-    digits = 0
+    counter = 0
+    sett = set()
+    word_counts = {}
     number_punctuations = 0
     punctuation = '/.|\'"*{[()}]?!%#€&=¶‰¢¥¡≠¿`^¨-_,;:·„≥>≤<@®¸√™'
     alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
     for line in file:
         characters = line.lower()
+
         for char in characters:
             if char in alphabet:
                 letters += 1
+
                 if char not in word_counts:
                     word_counts[char] = 1
                 else:
                     word_counts[char] += 1
+
             elif char == " ":
                 spaces += 1
+
             elif char.isdigit() == True:
                 digits += 1
+
             elif char in punctuation:
                 number_punctuations += 1
 
-
-    sett = set()
     for key, value in word_counts.items():
         sett.add((value, key))
+
     sett = sorted(sett, reverse=True)[0:10]
     total = letters + digits + spaces + number_punctuations
 
@@ -40,7 +46,7 @@ def character_analysis(file):
     print(f'  Punctuation: {number_punctuations:,} ({round(number_punctuations / total * 100, 1)}%)')
     print()
     print("Most common letters:")
-    counter = 0
+
     for number, char in sett:
         counter += 1
         percentage_letters = (number/letters) * 100
@@ -51,7 +57,10 @@ def character_analysis(file):
     #Mathplotlib graphs
     plt.figure(figsize=(12, 5))
     plt.subplot(1, 2, 1)
-    plt.bar([char for number, char in sett], [number for number, char in sett], color='purple')
+    labels = [char for number, char in sett]
+    values = [number for number, char in sett]
+
+    plt.bar(labels, values, color='purple')
     plt.title("Top 10 Most Common Letters")
     plt.xlabel("Letters")
     plt.ylabel("Frequency")
@@ -59,7 +68,7 @@ def character_analysis(file):
     plt.subplot(1, 2, 2)
     labels = ["Letters", "Spaces", "Punctuation"]
     values = [letters, spaces, number_punctuations]
-    
+
     plt.pie(values, labels=labels, autopct='%1.1f%%', startangle=90)
     plt.title("Character Type Distribution")
     plt.show()

@@ -3,8 +3,8 @@ def word_frequency_analysis(file):
     file.seek(0)
 
     counter = 0
-    word_counts = {}
     word_length = []
+    word_counts = {}
     number_words = 0
     flipped_list = []
     words_appearing_once = 0
@@ -18,6 +18,7 @@ def word_frequency_analysis(file):
 
         for word in words:
             new_word = ""
+
             for char in word:
                 if char not in punctuation:
                     new_word += char
@@ -69,8 +70,7 @@ def word_frequency_analysis(file):
     plt.xticks(rotation=45, ha='right')
 
     plt.subplot(1, 2, 2)
-    plt.hist(word_length, bins=range(1, max(word_length) + 2),
-             color='lightcoral', edgecolor='red')
+    plt.hist(word_length, bins=range(1, max(word_length) + 2), color='lightcoral', edgecolor='red')
     plt.title("Word Length Distribution")
     plt.xlabel("Word Length (characters)")
     plt.ylabel("Frequency")

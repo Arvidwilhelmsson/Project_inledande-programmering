@@ -1,0 +1,33 @@
+=========================================
+TEXT ANALYSIS RESULTS
+File analysed: The Red Room_August Strindberg.txt
+=========================================
+
+--- BASIC STATISTICS ---
+Lines: 13158
+Words: 102175
+Characters: 584633
+
+--- WORD STATISTICS ---
+Top 10 words:
+  the: 6624
+  a: 2856
+  of: 2836
+  and: 2748
+  to: 2617
+  he: 1959
+  in: 1467
+  his: 1424
+  was: 1363
+  you: 1350
+
+Unique words: 10290
+
+--- SENTENCE STATISTICS ---
+Total sentences: 7287
+Average words per sentence: 14.0
+
+--- CHARACTER STATISTICS ---
+Letters: 449824
+Spaces: 95909
+Punctuation: 25223

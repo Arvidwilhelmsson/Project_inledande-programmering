@@ -7,9 +7,9 @@ def sentence_analysis(file):
     previous_char = ""
     total_sentences = 0
     in_paragraph = False
-    after_ellipsis = False
     sentence_lengths = []
     longest_sentence = ""
+    after_ellipsis = False
     shortest_sentence = None
     sentence_length_distribution = {}
 
@@ -27,7 +27,6 @@ def sentence_analysis(file):
         for char in line:
             if (char == ' ' and previous_char in ['.', '!', '?']) or (previous_char not in ['.', '!', '?'] and in_paragraph == False):
                 total_sentences += 1
-
             sentence += char
 
             if char in ['.', '?', '!',':']:
@@ -53,11 +52,9 @@ def sentence_analysis(file):
 
                 if sentence != "":
                     after_ellipsis = False
-
                 sentence = ""
 
             previous_char = char
-
     average_words_per_sentence = round(number_words / total_sentences, 1)
 
     print(f"Total sentences: {total_sentences:,}")
@@ -75,7 +72,7 @@ def sentence_analysis(file):
         sentence_length_distribution.items(),
         key=lambda item: item[1],reverse=True)[:5]
     #items är nyckel och värde. key= lamda gör att item[1] är det som sorteras alltså antalet meningar. 
-    # reverse=True tar från störst till minst och 5 är de 5 första.
+    #reverse=True tar från störst till minst och 5 är de 5 första.
 
     for item in top_five:
         print(f"  {item[0]} words: {item[1]} sentences")
@@ -87,14 +84,16 @@ def sentence_analysis(file):
 
     plt.figure(figsize=(12, 5))
     plt.subplot(1, 2, 1)
-    plt.hist(sentence_lengths, bins=20, color='lightgreen',
-             edgecolor='green')
+    plt.hist(sentence_lengths, bins=20, color='lightgreen', edgecolor='green')
     plt.title("Sentence Length Distribution")
     plt.xlabel("Sentence Length (words)")
     plt.ylabel("Frequency")
 
     plt.subplot(1, 2, 2)
-    plt.bar([f"{length} words" for length, count in top_five], [count for length, count in top_five], color='orange')
+    labels = [f"{length} words" for length, count in top_five]
+    values = [count for length, count in top_five]
+
+    plt.bar(labels, values, color='orange')
     plt.title("Most Common Sentence Lengths")
     plt.xlabel("Sentence Length (words)")
     plt.ylabel("Number of Sentences")

@@ -25,7 +25,6 @@ def main():
         print("7. Exit")
         print("="*60)
         
-
         # Visa status för laddad fil
         if file_choice_name is None:
             print("No file loaded")
@@ -34,11 +33,8 @@ def main():
         print("="*60)
         print()
 
-
         # 2. Läs in menyval
         choice = input("Enter your choice (1-7): ").strip(" ")
-        
-
         if choice in ["2", "3", "4", "5", "6"] and file_choice_name is None:
             print("="*60)
             print("Please load a file first!")
@@ -49,6 +45,8 @@ def main():
         # 3. Hantera valet
         elif choice == "1":
             print("\n--- File selection ---")
+
+#===================================================Fixa med detta!
             file_choice_name = file_selection()
             if file is not None:
                 file.close()
@@ -56,6 +54,8 @@ def main():
             number_of_lines = 0
             for line in file:
                 number_of_lines += 1
+#===================================================Fixa med detta!
+
             print(f"Analysis complete! Processed {number_of_lines} lines.")
             print(f'Successfully loaded and analysed "{file_choice_name}"')
             print()

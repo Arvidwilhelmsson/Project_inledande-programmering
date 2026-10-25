@@ -8,6 +8,7 @@ def file_selection():
     print("5. The Time Machine by H. G. Wells.txt")
     print("6. Crime_and_punishment.txt")
     print()
+
     file_choice = input("Enter filename or number from list above: ")
     if file_choice == "1":
         file_choice_name = "A Doll's House_Henrik Ibsen.txt"
@@ -29,8 +30,5 @@ def file_selection():
     print()
     
     print(f"Analysing {file_choice_name}...")
-    #Funktion för analys av textfil. Beroende på vilket alt man väljer
-    #print("Analysis complete! Processed 22060(antal lines) lines.")"
-    #print(f"Successfully loaded and analysed {file_choice_name}"")
     print()
     return file_choice_name
