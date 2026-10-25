@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
-def sentence_analysis(file_lines):
+def sentence_analysis(file):
+    file.seek(0)
 
     sentence = ""
     number_words = 0
@@ -12,7 +13,7 @@ def sentence_analysis(file_lines):
     shortest_sentence = None
     sentence_length_distribution = {}
 
-    for line in file_lines:
+    for line in file:
         line = line.replace("i.e.", "ie")
         words = line.lower().split()
         number_words += len(words)
@@ -56,6 +57,7 @@ def sentence_analysis(file_lines):
                 sentence = ""
 
             previous_char = char
+
     average_words_per_sentence = round(number_words / total_sentences, 1)
 
     print(f"Total sentences: {total_sentences:,}")

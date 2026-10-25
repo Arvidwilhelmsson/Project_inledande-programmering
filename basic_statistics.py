@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
-def basic_statistics(file_lines):
+def basic_statistics(file):
+    file.seek(0)
 
     lines = 0
     sentences = 0
@@ -11,7 +12,7 @@ def basic_statistics(file_lines):
     characters_with_spaces = 0
     characters_without_spaces = 0
 
-    for line in file_lines:
+    for line in file:
         words = line.lower().split()
         number_words += len(words)
         lines += 1

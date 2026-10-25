@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
-def word_frequency_analysis(file_lines):
+def word_frequency_analysis(file):
+    file.seek(0)
 
     counter = 0
     word_counts = {}
@@ -10,7 +11,7 @@ def word_frequency_analysis(file_lines):
     characters_without_spaces = 0
     punctuation = '.,!?"\'()[]{}:;-_'
 
-    for line in file_lines:
+    for line in file:
         words = line.lower().split()
         number_words += len(words)
         characters_without_spaces += len(line.replace(' ', ''))

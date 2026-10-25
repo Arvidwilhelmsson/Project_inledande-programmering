@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
-def character_analysis(file_lines):
+def character_analysis(file):
+    file.seek(0)
 
-    word_length = []
     word_counts = {}
     spaces = 0
     letters = 0
@@ -10,7 +10,7 @@ def character_analysis(file_lines):
     punctuation = '/.|\'"*{[()}]?!%#€&=¶‰¢¥¡≠¿`^¨-_,;:·„≥>≤<@®¸√™'
     alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-    for line in file_lines:
+    for line in file:
         characters = line.lower()
         for char in characters:
             if char in alphabet:
@@ -19,7 +19,6 @@ def character_analysis(file_lines):
                     word_counts[char] = 1
                 else:
                     word_counts[char] += 1
-                word_length.append(char)
             elif char == " ":
                 spaces += 1
             elif char.isdigit() == True:
@@ -44,7 +43,7 @@ def character_analysis(file_lines):
     counter = 0
     for number, char in sett:
         counter += 1
-        percentage_letters = (number/len(word_length)) * 100
+        percentage_letters = (number/letters) * 100
         print(f'  {counter:>2} {repr(char)} - {number:,} times ({round(percentage_letters,1)}%)')
 
     #Mathplotlib graphs
