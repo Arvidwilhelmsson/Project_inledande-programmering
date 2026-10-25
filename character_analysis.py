@@ -46,3 +46,19 @@ def character_analysis(file_lines):
         counter += 1
         percentage_letters = (number/len(word_length)) * 100
         print(f'  {counter:>2} {repr(char)} - {number:,} times ({round(percentage_letters,1)}%)')
+
+    #Mathplotlib graphs
+    plt.figure(figsize=(12, 5))
+    plt.subplot(1, 2, 1)
+    plt.bar([char for number, char in sett], [number for number, char in sett], color='purple')
+    plt.title("Top 10 Most Common Letters")
+    plt.xlabel("Letters")
+    plt.ylabel("Frequency")
+
+    plt.subplot(1, 2, 2)
+    labels = ["Letters", "Spaces", "Punctuation"]
+    values = [letters, spaces, number_punctuations]
+    
+    plt.pie(values, labels=labels, autopct='%1.1f%%', startangle=90)
+    plt.title("Character Type Distribution")
+    plt.show()

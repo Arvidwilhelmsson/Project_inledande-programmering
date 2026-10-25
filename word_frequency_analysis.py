@@ -52,3 +52,24 @@ def word_frequency_analysis(file_lines):
     print(f"  Longest word: {longest_word} characters")
     print(f"  Average word length: {average_word_length} characters")
     print(f"Words appearing only once: {words_appearing_once:,}")
+
+    #Mathplotlib graphs
+    top_words = sorted(flipped_list, reverse=True)[:10]
+    word_labels = [word for count, word in top_words]
+    word_values = [count for count, word in top_words]
+
+    plt.figure(figsize=(12, 5))
+    plt.subplot(1, 2, 1)
+    plt.bar(word_labels, word_values, color='skyblue', edgecolor='blue')
+    plt.title("Top 10 Most Common Words")
+    plt.xlabel("Words")
+    plt.ylabel("Frequency")
+    plt.xticks(rotation=45, ha='right')
+
+    plt.subplot(1, 2, 2)
+    plt.hist(word_length, bins=range(1, max(word_length) + 2),
+             color='lightcoral', edgecolor='red')
+    plt.title("Word Length Distribution")
+    plt.xlabel("Word Length (characters)")
+    plt.ylabel("Frequency")
+    plt.show()

@@ -6,6 +6,7 @@ def sentence_analysis(file_lines):
     previous_char = ""
     total_sentences = 0
     in_paragraph = False
+    sentence_lengths = []
     longest_sentence = ""
     shortest_sentence = None
     sentence_length_distribution = {}
@@ -69,6 +70,24 @@ def sentence_analysis(file_lines):
 
     for item in top_five:
         print(f"  {item[0]} words: {item[1]} sentences")
-
     print()
-    
+
+    #Mathplotlib graphs
+    for length, count in sentence_length_distribution.items():
+        sentence_lengths.extend([length] * count)
+
+    plt.figure(figsize=(12, 5))
+    plt.subplot(1, 2, 1)
+    plt.hist(sentence_lengths, bins=20, color='lightgreen',
+             edgecolor='green')
+    plt.title("Sentence Length Distribution")
+    plt.xlabel("Sentence Length (words)")
+    plt.ylabel("Frequency")
+
+    plt.subplot(1, 2, 2)
+    plt.bar([f"{length} words" for length, count in top_five], [count for length, count in top_five], color='orange')
+    plt.title("Most Common Sentence Lengths")
+    plt.xlabel("Sentence Length (words)")
+    plt.ylabel("Number of Sentences")
+    plt.xticks(rotation=45, ha='right')
+    plt.show()

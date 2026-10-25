@@ -52,6 +52,11 @@ def basic_statistics(file_lines):
     print(f"Average words per sentence: {average_words_per_sentence}")
     print()
 
-    #print("Generating basic statistics visualisation...")
-    #print()
-    #print("Press Enter to continue...")
+    #Mathplotlib graphs
+    labels = ["Lines", "Paragraphs", "Sentences", "Unique\nWords"]
+    values = [lines, paragraphs, sentences, len(unique_words)]
+
+    plt.bar(labels, values, color=["skyblue", "lightgreen", "lightcoral", "gold"])
+    plt.title("Text Composition")
+    plt.ylabel("Count")
+    plt.show()
