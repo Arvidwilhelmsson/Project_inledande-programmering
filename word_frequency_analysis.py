@@ -52,7 +52,8 @@ def word_frequency_analysis(file):
     print(f"  Shortest word: {shortest_word} characters")
     print(f"  Longest word: {longest_word} characters")
     print(f"  Average word length: {average_word_length} characters")
-    print(f"Words appearing only once: {words_appearing_once:,}")
+    print(f"Words appearing only once: {words_appearing_once:,}\n")
+    print(f"Generating word frequency visualisation...\n")
 
     #Mathplotlib graphs
     top_words = sorted(flipped_list, reverse=True)[:10]

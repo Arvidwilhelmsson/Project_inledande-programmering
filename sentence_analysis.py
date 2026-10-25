@@ -68,7 +68,8 @@ def sentence_analysis(file):
     print(f"Shortest sentence text: {shortest_sentence}")
     print(f"Longest sentence text: {longest_sentence}")
     print()
-    print("Sentence length distribution (top 5):")
+    print("Sentence length distribution (top 5):\n")
+    print(f"Generating sentence analysis visualisation...\n")
 
     top_five = sorted(
         sentence_length_distribution.items(),

@@ -50,8 +50,8 @@ def basic_statistics(file):
     print(f"Characters (without spaces): {characters_without_spaces:,}")
     print(f"Average words per line: {words_per_line}")
     print(f"Average word length: {average_word_length} characters")
-    print(f"Average words per sentence: {average_words_per_sentence}")
-    print()
+    print(f"Average words per sentence: {average_words_per_sentence}\n")
+    print(f"Generating basic statistics visualisation...\n")
 
     #Mathplotlib graphs
     labels = ["Lines", "Paragraphs", "Sentences", "Unique\nWords"]

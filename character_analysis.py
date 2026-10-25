@@ -45,6 +45,8 @@ def character_analysis(file):
         counter += 1
         percentage_letters = (number/letters) * 100
         print(f'  {counter:>2} {repr(char)} - {number:,} times ({round(percentage_letters,1)}%)')
+    print()
+    print(f"Generating character analysis visualisation...\n")
 
     #Mathplotlib graphs
     plt.figure(figsize=(12, 5))
