@@ -37,11 +37,15 @@ def file_selection():
     if found_name is None:
         print()
         print(f'Could not find "{file_choice_name}". Text files in this folder:')
+        print()
         for name in files_in_folder:
             if name.lower().endswith(".txt"):
                 print(f"  {name}")
         print()
+        print("="*60)
         input("Press Enter to return to the file selection...")
+        print("="*60)
+        print()
         return file_selection()
     file_choice_name = found_name
     print()

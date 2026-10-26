@@ -46,8 +46,6 @@ def main():
         # 3. Hantera valet
         elif choice == "1":
             print("\n--- File selection ---")
-
-#===================================================Fixa med detta!
             new_file_name = file_selection()
             if new_file_name is None:
                 continue
@@ -62,8 +60,6 @@ def main():
                 continue
             file = new_file
             file_choice_name = new_file_name
-#===================================================Fixa med detta!
-
             print(f"Analysis complete! Processed {number_of_lines} lines.")
             print(f'Successfully loaded and analysed "{file_choice_name}"')
             print()
