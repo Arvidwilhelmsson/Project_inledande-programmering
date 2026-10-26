@@ -1,13 +1,14 @@
+from file_selection import file_selection
 from basic_statistics import basic_statistics
 from sentence_analysis import sentence_analysis
-from word_frequency_analysis import word_frequency_analysis
-from file_selection import file_selection
 from character_analysis import character_analysis
+from word_frequency_analysis import word_frequency_analysis
 def main():
     choice = None
     file = None
     file_choice_name = None
-    fil = ["A Doll's House_Henrik Ibsent", "Frankenstein by Mary Wollstonecraft Shelley", "Moby-Dick_Herman Melville", "The Red Room August Strindberg", "The Time Machine by H. G. Wells", "Crime_and_punishment.txt"]
+    fil = ["A Doll's House_Henrik Ibsent", "Frankenstein by Mary Wollstonecraft Shelley", "Moby-Dick_Herman Melville", 
+           "The Red Room August Strindberg", "The Time Machine by H. G. Wells", "Crime_and_punishment.txt"]
     print(f"Welcome to the Text analyser!\nThis program analyses text files and provies statistical insights.\n\n")
 
     while True:
@@ -48,24 +49,17 @@ def main():
 
 #===================================================Fixa med detta!
             new_file_name = file_selection()
+            if new_file_name is None:
+                continue
             try:
                 new_file = open(new_file_name, 'r', encoding='utf-8')
                 number_of_lines = 0
                 for line in new_file:
                     number_of_lines += 1
-            except FileNotFoundError:
+            except:
                 print(f'Could not find "{new_file_name}" in the current folder.')
+                input("\nPress Enter to return to the menu...")
                 continue
-            except UnicodeDecodeError:
-                new_file.close()
-                print(f'"{new_file_name}" could not be read (it is not a UTF-8 text file).')
-                continue
-            if number_of_lines == 0:
-                new_file.close()
-                print(f'"{new_file_name}" is empty.')
-                continue
-            if file is not None:
-                file.close()
             file = new_file
             file_choice_name = new_file_name
 #===================================================Fixa med detta!

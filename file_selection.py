@@ -1,4 +1,6 @@
+import os
 def file_selection():
+    files_in_folder = os.listdir(".")
     
     print("Available text files:")
     print("1. A Doll's House_Henrik Ibsent.txt")
@@ -26,8 +28,24 @@ def file_selection():
         file_choice_name = file_choice
         if not file_choice_name.lower().endswith(".txt"):
             file_choice_name += ".txt"
+
+    found_name = None
+    for name in files_in_folder:
+        if name.lower() == file_choice_name.lower():
+            found_name = name
+
+    if found_name is None:
+        print()
+        print(f'Could not find "{file_choice_name}". Text files in this folder:')
+        for name in files_in_folder:
+            if name.lower().endswith(".txt"):
+                print(f"  {name}")
+        print()
+        input("Press Enter to return to the file selection...")
+        return file_selection()
+    file_choice_name = found_name
     print()
-    
+      
     print(f"Analysing {file_choice_name}...")
     print()
     return file_choice_name
